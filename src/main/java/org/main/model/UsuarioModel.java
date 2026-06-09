@@ -146,6 +146,36 @@ public class UsuarioModel {
         }
     }
 
+    public void deletar(int id) throws SQLException {
+        Connection conn = null;
+        PreparedStatement psDelete = null;
+
+        try {
+            conn = DriverManager.getConnection(url,user,password);
+            String deleteSQL = "DELETE FROM usuarios WHERE coluna = ?";
+            psDelete = conn.prepareStatement(deleteSQL);
+
+            psDelete.setInt(1,id);
+
+            int linhasAfetadas = psDelete.executeUpdate();
+            if (linhasAfetadas > 0) {
+                System.out.printf("%d IDs deletados com Sucesso!!!%n", linhasAfetadas);
+            } else {
+                System.out.println("Falha ao deletar Livros.%n");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } finally {
+            if (psDelete != null) {
+                psDelete.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+
     private void gerarMatricula(Connection conn, int idUsuario) throws SQLException {
 
         String matricula = Usuarios.getMatricula(idUsuario);
