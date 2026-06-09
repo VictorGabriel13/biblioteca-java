@@ -19,13 +19,26 @@ public class AdminController {
         BibliotecaView.menuAdministrador();
             int escolha = scan.nextInt();
             if (escolha == 0) {
-                System.out.println("Saindo...");
+                System.out.println("""
+                    =================================
+                    Obrigado por utilizar o sistema!
+                    =================================
+            
+                         Encerrando a aplicação...
+            
+                              Até a próxima!
+                           Processo finalizado.
+                    """);
                 return;
             }
             switch (escolha) {
+                //Primeiro Menu do adm
                 case 1:
                     BibliotecaView.menuLivros();
                     escolha = scan.nextInt();
+
+
+                    // Segundo Menu do adm
                     switch (escolha) {
                         case 1:
                             livrosController.inserirController();
@@ -33,10 +46,33 @@ public class AdminController {
                         case 2:
                             livrosController.listarController();
                             break;
+                        case 3:
+                            livrosController.atualizarController();
+                            break;
+                        case 4:
+                            livrosController.deletarController();
+                            break;
+                        case 5:
+                            BibliotecaView.menuAdministrador();
+                            break;
+                        default:
+                            System.out.println("Opção inválida!");
                     }
+                    break;
                 case 2:
                     usuariosController.listarController();
                     break;
+                case 3:
+                    usuariosController.cadastrarUser();
+                    break;
+                case 4:
+                    usuariosController.atualizarController();
+                    break;
+                case 5:
+                    usuariosController.deletarController();
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
             }
         }
 

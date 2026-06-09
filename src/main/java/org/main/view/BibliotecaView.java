@@ -94,7 +94,7 @@ public class BibliotecaView {
                           2 - Listar Livros
                           3 - Atualizar Livro
                           4 - Deletar Livro
-                          0 - Voltar
+                          5 - Voltar
                         +---------------------------+
                         """ + ANSI_RESET +
 
