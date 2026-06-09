@@ -104,4 +104,20 @@ public class UsuariosController {
         }
         usuarioModel.atualizar(atualizar);
     }
+
+    public void deletarController() throws SQLException {
+        Scanner scan = new Scanner(System.in);
+        UsuarioModel usuarioModel = new UsuarioModel();
+        System.out.print("Informe a quantidade de IDs a serem deletados: ");
+        int qtd = scan.nextInt();
+
+        int[] ids = new int[qtd];
+        for (int i = 0; i < ids.length; i++) {
+            System.out.printf("Informe o %d° ID a ser deletado: ", i);
+            ids[i] = scan.nextInt();
+        }
+        for (int id : ids) {
+            usuarioModel.deletar(id);
+        }
+    }
 }
