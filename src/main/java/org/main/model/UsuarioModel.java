@@ -152,7 +152,7 @@ public class UsuarioModel {
 
         try {
             conn = DriverManager.getConnection(url,user,password);
-            String deleteSQL = "DELETE FROM usuarios WHERE coluna = ?";
+            String deleteSQL = "DELETE FROM usuarios WHERE id = ?";
             psDelete = conn.prepareStatement(deleteSQL);
 
             psDelete.setInt(1,id);

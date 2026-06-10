@@ -113,7 +113,7 @@ public class UsuariosController {
 
         int[] ids = new int[qtd];
         for (int i = 0; i < ids.length; i++) {
-            System.out.printf("Informe o %d° ID a ser deletado: ", i);
+            System.out.printf("Informe o %d° ID a ser deletado: ", i + 1);
             ids[i] = scan.nextInt();
         }
         for (int id : ids) {
