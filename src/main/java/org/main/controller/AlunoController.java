@@ -10,6 +10,7 @@ public class AlunoController {
     public void iniciar(Usuarios usuarioLogado) throws SQLException {
         Scanner scan = new Scanner(System.in);
         LivrosController livrosController = new LivrosController();
+        UsuariosController usuariosController = new UsuariosController();
 
             System.out.printf("Bem-vindo, Aluno %s!!!%n", usuarioLogado.getNome());
         while (true) {
@@ -27,6 +28,9 @@ public class AlunoController {
                     break;
                 case 2:
                     livrosController.listarController();
+                    break;
+                case 4:
+                    usuariosController.deletarController();
                     break;
                 default:
                     System.out.println("Opção inválida!");
