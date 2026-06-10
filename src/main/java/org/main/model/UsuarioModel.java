@@ -108,7 +108,7 @@ public class UsuarioModel {
 
         try{
             conn = DriverManager.getConnection(url,user,password);
-            String updateSQL = "UPDATE usuarios SET nome = ? telefone = ? senha = ? WHERE id = ?";
+            String updateSQL = "UPDATE usuarios SET nome = ?, telefone = ?, senha = ? WHERE id = ?";
             psUpdate = conn.prepareStatement(updateSQL);
 
             psUpdate.setString(1, usuario.getNome());
