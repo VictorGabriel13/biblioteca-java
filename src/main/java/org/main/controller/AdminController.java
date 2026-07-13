@@ -1,6 +1,7 @@
 package org.main.controller;
 
-import org.main.entities.Usuarios;
+import org.main.model.EmprestimoModel;
+import org.main.model.entities.Usuarios;
 import org.main.view.BibliotecaView;
 
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ public class AdminController {
         Scanner scan = new Scanner(System.in);
         LivrosController livrosController = new LivrosController();
         UsuariosController usuariosController = new UsuariosController();
+        EmprestimoController emprestimoController = new EmprestimoController();
 
         System.out.printf("Bem-vindo, Administrador %s!!!%n", usuarioLogado.getNome());
 
@@ -42,15 +44,19 @@ public class AdminController {
                     switch (escolha) {
                         case 1:
                             livrosController.inserirController();
+                            BibliotecaView.menuLivros();
                             break;
                         case 2:
                             livrosController.listarController();
+                            BibliotecaView.menuLivros();
                             break;
                         case 3:
                             livrosController.atualizarController();
+                            BibliotecaView.menuLivros();
                             break;
                         case 4:
                             livrosController.deletarController();
+                            BibliotecaView.menuLivros();
                             break;
                         case 5:
                             BibliotecaView.menuAdministrador();
@@ -71,10 +77,12 @@ public class AdminController {
                 case 5:
                     usuariosController.deletarController();
                     break;
+                case 6:
+                    emprestimoController.listarController();
+                    break;
                 default:
                     System.out.println("Opção inválida!");
             }
         }
-
     }
 }

@@ -69,8 +69,9 @@ public class BibliotecaView {
                           1 - Ver Perfil
                           2 - Listar Livros
                           3 - Pegar Livro
-                          4 - Deletar a conta
-                          0 - Voltar
+                          4 - Devolver Livro
+                          5 - Deletar a conta
+                          6 - Sair
                         +---------------------------+
                         """ + ANSI_RESET +
 

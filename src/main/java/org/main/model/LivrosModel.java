@@ -1,5 +1,6 @@
 package org.main.model;
-import org.main.entities.Livros;
+import org.main.model.entities.Livros;
+import org.main.model.entities.StatusLivro;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -63,9 +64,9 @@ public class LivrosModel {
             int id = rs.getInt("id");
             String nome = rs.getString("nome");
             String autor = rs.getString("autor");
+             StatusLivro status = StatusLivro.valueOf(rs.getString("status"));
 
-            Livros livros = new Livros(id, nome, autor);
-
+            Livros livros = new Livros(id, nome, autor, status);
             lista.add(livros);
         }
            return lista;
@@ -125,7 +126,6 @@ public class LivrosModel {
 
     }
 
-
     public void deletar(int id) throws SQLException {
         Connection conn = null;
         PreparedStatement psDelete = null;
@@ -153,5 +153,48 @@ public class LivrosModel {
                 conn.close();
             }
         }
+    }
+
+    public List<Livros> buscarLivro(String nomeLivro) throws SQLException {
+
+        Connection conn = null;
+        PreparedStatement psSelect = null;
+
+        try {
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            ArrayList<Livros> lista = new ArrayList<>();
+
+            String selectSQL = "SELECT * FROM livros WHERE nome = ?";
+
+            psSelect = conn.prepareStatement(selectSQL);
+            psSelect.setString(1, nomeLivro);
+            ResultSet rs = psSelect.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String autor = rs.getString("autor");
+                StatusLivro status = StatusLivro.valueOf(rs.getString("status"));
+
+                Livros livros = new Livros(id, nome, autor, status);
+                lista.add(livros);
+            }
+            return lista;
+        } catch (RuntimeException e) {
+            System.out.println("Erro: " + e.getMessage());
+
+            // ou eu poderia colocar return List.of();
+            return Collections.emptyList();
+        } finally {
+            if (psSelect != null) {
+                psSelect.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
     }
 }

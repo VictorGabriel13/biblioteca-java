@@ -2,8 +2,9 @@ package org.main;
 import org.main.controller.AdminController;
 import org.main.controller.AlunoController;
 import org.main.controller.UsuariosController;
-import org.main.entities.TipoUsuario;
-import org.main.entities.Usuarios;
+import org.main.model.entities.TipoUsuario;
+import org.main.model.entities.Usuarios;
+import org.main.utils.Terminal;
 import org.main.view.BibliotecaView;
 
 import java.util.InputMismatchException;
@@ -37,6 +38,9 @@ public class Main {
                     case 2:
                         //Cadastrar Users
                         usuariosController.cadastrarUser();
+
+                        // add uma forma do user ver a sua matricula antes do Login
+                      //  System.out.printf("A sua Matricula é: %s%n", Usuarios.getMatricula());
                         break;
 
                     default:
@@ -44,6 +48,7 @@ public class Main {
                 }
 
             }
+            Terminal.limparTerminal();
 
             // Direciona o fluxo do sistema conforme o tipo de usuário logado
                 if (usuarioLogado.getTipoUsuario() == TipoUsuario.ADMIN) {
