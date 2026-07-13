@@ -1,7 +1,7 @@
 package org.main.controller;
 
-import org.main.entities.TipoUsuario;
-import org.main.entities.Usuarios;
+import org.main.model.entities.TipoUsuario;
+import org.main.model.entities.Usuarios;
 import org.main.model.UsuarioModel;
 import java.sql.SQLException;
 import java.util.List;

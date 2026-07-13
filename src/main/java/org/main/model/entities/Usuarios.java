@@ -1,4 +1,4 @@
-package org.main.entities;
+package org.main.model.entities;
 
 import java.time.Year;
 
@@ -63,6 +63,15 @@ public class Usuarios {
         setNome(nome);
 
         this.telefone = "Não Definido";
+    }
+
+    //
+    public Usuarios(int id, String nome, String matricula, String telefone,TipoUsuario tipoUsuario ) {
+        this.id = id;
+        setNome(nome);
+        this.matricula = matricula;
+        this.telefone = telefone;
+        this.tipoUsuario = tipoUsuario;
     }
 
     public void setNome(String nome) {

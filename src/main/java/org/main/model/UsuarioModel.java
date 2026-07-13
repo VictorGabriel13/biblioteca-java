@@ -1,7 +1,7 @@
 package org.main.model;
 
-import org.main.entities.TipoUsuario;
-import org.main.entities.Usuarios;
+import org.main.model.entities.TipoUsuario;
+import org.main.model.entities.Usuarios;
 
 import java.sql.*;
 import java.util.ArrayList;

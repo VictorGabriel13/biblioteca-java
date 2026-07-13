@@ -1,6 +1,6 @@
 package org.main.controller;
 
-import org.main.entities.Usuarios;
+import org.main.model.entities.Usuarios;
 import org.main.view.BibliotecaView;
 
 import java.sql.SQLException;
@@ -11,13 +11,14 @@ public class AlunoController {
         Scanner scan = new Scanner(System.in);
         LivrosController livrosController = new LivrosController();
         UsuariosController usuariosController = new UsuariosController();
+        EmprestimoController emprestimoController = new EmprestimoController();
 
             System.out.printf("Bem-vindo, Aluno %s!!!%n", usuarioLogado.getNome());
         while (true) {
             //Menu principal do aluno aqui;
             BibliotecaView.menuAlunos();
             int choose = scan.nextInt();
-            if (choose == 0) {
+            if (choose == 6) {
                 System.out.println("Saindo...");
                 return;
             }
@@ -29,7 +30,14 @@ public class AlunoController {
                 case 2:
                     livrosController.listarController();
                     break;
+                    //ADD opção de pegar Livro
+                case 3:
+                    emprestimoController.fazerEmprestimo(usuarioLogado);
+                    break;
                 case 4:
+                    emprestimoController.devolverLivro(usuarioLogado);
+                    break;
+                case 5:
                     usuariosController.deletarController();
                     break;
                 default:

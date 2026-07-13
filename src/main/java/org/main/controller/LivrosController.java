@@ -1,6 +1,6 @@
 package org.main.controller;
 
-import org.main.entities.Livros;
+import org.main.model.entities.Livros;
 import org.main.model.LivrosModel;
 
 import java.sql.SQLException;
@@ -31,14 +31,13 @@ public class LivrosController {
     public void listarController() throws SQLException {
         LivrosModel livrosModel = new LivrosModel();
 
-        System.out.println(ANSI_VERDE + "Listando Livros... ");
+        System.out.println(ANSI_VERDE + "Listando Livros... " + ANSI_RESET);
         List<Livros> Livros = livrosModel.listar();
 
         for (Livros listaDeLivros : Livros) {
 
-            System.out.printf("ID: %d - Nome: %s - Autor: %s%n",listaDeLivros.getId(),listaDeLivros.getNome(), listaDeLivros.getAutor());
+            System.out.printf("ID: %d - Nome: %s - Autor: %s - Status: %s%s%s%n",listaDeLivros.getId(),listaDeLivros.getNome(), listaDeLivros.getAutor(), ANSI_VERDE, listaDeLivros.getStatusLivro(), ANSI_RESET);
         }
-        System.out.print(ANSI_RESET);
     }
     public void atualizarController() throws SQLException {
         Scanner scan = new Scanner(System.in);

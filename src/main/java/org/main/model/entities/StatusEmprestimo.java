@@ -1,4 +1,4 @@
-package org.main.entities;
+package org.main.model.entities;
 
 public enum StatusEmprestimo {
     EMPRESTADO,

@@ -1,9 +1,10 @@
-package org.main.entities;
+package org.main.model.entities;
 
 public class Livros {
     private int id;
     private String nome;
     private String autor;
+    private StatusLivro statusLivro;
 
     public Livros() {
 
@@ -14,10 +15,11 @@ public class Livros {
         this.autor = autor;
     }
 
-    public Livros(int id, String nome, String autor) {
+    public Livros(int id, String nome, String autor, StatusLivro statusLivro) {
         this.id = id;
         this.nome = nome;
         this.autor = autor;
+        this.statusLivro = statusLivro;
     }
 
     public void setId(int id) {
@@ -42,5 +44,19 @@ public class Livros {
 
     public String getAutor() {
         return autor;
+    }
+
+    public StatusLivro getStatusLivro() {
+        return statusLivro;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", autor='" + autor + '\'' +
+                ", status=" + statusLivro +
+                '}';
     }
 }

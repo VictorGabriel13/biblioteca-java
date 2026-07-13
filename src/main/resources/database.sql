@@ -6,6 +6,7 @@ CREATE TABLE livros(
 id int primary key auto_increment,
 nome varchar(200) NOT NULL unique,
 autor varchar(250) NOT NULL
+status VARCHAR(20) NOT NULL DEFAULT 'DISPONIVEL'
 );
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
