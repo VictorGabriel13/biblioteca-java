@@ -1,44 +1,65 @@
 package org.main.controller;
 
+import org.main.model.entities.TipoUsuario;
+import org.main.model.entities.Usuarios;
+import org.main.utils.Terminal;
+import org.main.view.BibliotecaView;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class MainController {
-    /*
+    public static void exibir() {
+        try {
+            Scanner scan = new Scanner(System.in);
+            UsuariosController usuariosController = new UsuariosController();
 
 
+            Usuarios usuarioLogado = null;
 
-    while(true) {
-                System.out.print(MENU);
+            while (usuarioLogado == null) {
+                BibliotecaView.menuInicial();
                 int choose = scan.nextInt();
                 scan.nextLine();
 
                 if (choose == 0) {
                     System.out.println("Saindo...");
-                    break;
+                    return;
                 }
 
                 switch (choose) {
                     case 1:
-                        //Inserir novo Livro
-                        livrosController.inserirController();
+                        //Entrar na conta
+                        usuarioLogado = usuariosController.entrar();
                         break;
                     case 2:
-                        //Lista Livros
-                        livrosController.listarController();
+                        //Cadastrar Users
+                        usuariosController.cadastrarUser();
+
+                        // add uma forma do user ver a sua matricula antes do Login
+                        //  System.out.printf("A sua Matricula é: %s%n", Usuarios.getMatricula());
                         break;
-                    case 3:
-                        //Atualizar cadastro de Livros
-                        livrosController.atualizarController();
-                        break;
-                    case 4:
-                        //Deletar cadastro de Livros
-                        livrosController.deletarController();
-                        break;
+
+                    default:
+                        System.out.println("Opção inválida!");
                 }
+
             }
-        } catch (InputMismatchException e) {
+            Terminal.limparTerminal();
+
+            // Direciona o fluxo do sistema conforme o tipo de usuário logado
+            if (usuarioLogado.getTipoUsuario() == TipoUsuario.ADMIN) {
+                AdminController adminController = new AdminController();
+                adminController.iniciar(usuarioLogado);
+            } else {
+                AlunoController alunoController = new AlunoController();
+                alunoController.iniciar(usuarioLogado);
+            }
+        } catch (
+                InputMismatchException e) {
             System.out.println("Digite apenas números!");
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
-
-     */
+    }
 }
