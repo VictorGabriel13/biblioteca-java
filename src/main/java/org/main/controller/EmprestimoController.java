@@ -43,9 +43,7 @@ public class EmprestimoController {
 
         for (Livros livro : livros.buscarLivro(nome)) {
             if (livro.getStatusLivro() != StatusLivro.DISPONIVEL) {
-               // int id = emprestimoModel.getIdEmprestimo(usuarioLogado.getId(),livro.getId());
-                System.out.println("Informe o ID do emprestimo: ");
-                int id = scan.nextInt();
+               int id = emprestimoModel.getIdEmprestimo(usuarioLogado.getId(),livro.getId());
 
                 Emprestimo devolucao = new Emprestimo(id,usuarioLogado, livro, dataDevolucao, StatusEmprestimo.DEVOLVIDO);
 

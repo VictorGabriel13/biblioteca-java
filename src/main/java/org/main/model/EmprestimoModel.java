@@ -273,17 +273,18 @@ public class EmprestimoModel {
         try {
             conn = DriverManager.getConnection(url, user, password);
             String selectSQL = """
-                SELECT id
-                FROM emprestimos
-                WHERE id_usuario = ?
-                  AND id_livro = ?
-                  AND status = ?;
-                """;
+                    SELECT *
+                    FROM emprestimos
+                    WHERE id_usuario = ?
+                      AND id_livro = ?
+                    ORDER BY id DESC
+                    LIMIT 1;
+                    """;
 
             psSelect = conn.prepareStatement(selectSQL);
             psSelect.setInt(1, idUsuario);
             psSelect.setInt(2, idLivro);
-            psSelect.setString(3, StatusEmprestimo.EMPRESTADO.name());
+
             ResultSet rs = psSelect.executeQuery();
 
             if (rs.next()) {
@@ -297,7 +298,7 @@ public class EmprestimoModel {
             }
             if (conn != null) {
                 conn.close();
-            }
+                }
             }
         return -1;
         }

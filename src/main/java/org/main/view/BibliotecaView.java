@@ -45,7 +45,6 @@ public class BibliotecaView {
                           4 - Atualizar Aluno
                           5 - Remover Aluno
                           6 - Empréstimos
-                          7 - Relatórios
                           0 - Sair
                         +----------------------------------+
                         """ + ANSI_RESET +
