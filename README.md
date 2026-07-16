@@ -30,7 +30,7 @@ Sistema de gerenciamento de biblioteca desenvolvido em Java utilizando Programa√
 
 1. Clone o reposit√≥rio:
    ```bash
-   git clone URL_DO_REPOSITORIO
+   git clone https://github.com/VictorGabriel13/biblioteca-java.git
    ```
 
 2. Configure o banco de dados MySQL.
